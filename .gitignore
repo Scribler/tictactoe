@@ -1,0 +1,16 @@
+# NeoVim Session Files
+*.vim
+
+# Libre Office Calc Files
+*.ods
+*.ods#
+
+# images
+*.jpg
+*.jpeg
+
+# temp files?
+*.temp
+
+# Notes Files
+*.org
