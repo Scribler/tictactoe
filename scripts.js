@@ -13,14 +13,22 @@ const gameInit = (function(){
     let playerOneDefaultOrder = 0;
     let playerTwoDefaultOrder = 1;
     const player1 = {
-      name: prompt("Player 1, what is your name?"),
-      mark: prompt("Player 1, what is your mark?"),
+      // **[IMPORTANT]** Name and mark need to be sanitised
+      //
+      // name: prompt("Player 1, what is your name?"),
+      // mark: prompt("Player 1, what is your mark?"),
+      name: "Bob", // temp name
+      mark: "X",   // temp mark
       identifier: 1,
       playOrder: playerOneDefaultOrder,
     }
     const player2 = {
-      name: prompt("Player 2, what is your name?"),
-      mark: prompt("Player 2, what is your mark?"),
+      // **[IMPORTANT]** Name and mark need to be sanitised
+      //
+      // name: prompt("Player 2, what is your name?"),
+      // mark: prompt("Player 2, what is your mark?"),
+      name: "James", // temp name
+      mark: "O",     // temp mark
       identifier: 2,
       playOrder: playerTwoDefaultOrder,
     }
@@ -34,25 +42,6 @@ const gameInit = (function(){
 
 
   
-
-  //
-  // Temporary player objects START
-  //
-  // const player1 = {
-  //   mark: "X",
-  //   identifier: 1,
-  // }
-  // const player2 = {
-  //   mark: "O",
-  //   identifier: 2,
-  // }
-  //
-  // Temporary player objects END
-  //
-
- 
-
-
 
   // Setting up game board START
   //
