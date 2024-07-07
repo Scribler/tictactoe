@@ -1,63 +1,98 @@
-//
-// players(2)
-//
-const player1  = {
-  name: "player1",
-  mark: "X",
-  tempMark: 1,
-}
+console.log("hello world");
 
-const player2  = {
-  name: "player2",
-  mark: "0",
-  tempMark: 2,
-}
+// game board
 
-
-//
-// gameboard
-//
-const Gameboard = (() => {
-  const gameBoardArray = [];
+const gameInit = (function(){
+  // Variables
+  const gameBoard = [];
+  const rows = 3;
+  const columns = 3;
+  const [player1, player2] = playerSetup();
   
-  for (let i = 0; i < 3; i++) { // build 3 'columns' of 3 within the gameboard array
-    gameBoardArray.push([0,0,0]);
+  function playerSetup() {
+    let playerOneDefaultOrder = 0;
+    let playerTwoDefaultOrder = 1;
+    const player1 = {
+      name: prompt("Player 1, what is your name?"),
+      mark: prompt("Player 1, what is your mark?"),
+      identifier: 1,
+      playOrder: playerOneDefaultOrder,
+    }
+    const player2 = {
+      name: prompt("Player 2, what is your name?"),
+      mark: prompt("Player 2, what is your mark?"),
+      identifier: 2,
+      playOrder: playerTwoDefaultOrder,
+    }
+    return [player1, player2];
   }
 
+  function showPlayers() {
+    console.log(player1);
+    console.log(player2);
+  }
+
+
+  
+
   //
-  // See if you can move the below actons outside of the module
+  // Temporary player objects START
+  //
+  // const player1 = {
+  //   mark: "X",
+  //   identifier: 1,
+  // }
+  // const player2 = {
+  //   mark: "O",
+  //   identifier: 2,
+  // }
+  //
+  // Temporary player objects END
   //
 
-  gameBoardArray[1][2] = player2.tempMark; // test marks
-  gameBoardArray[1][0] = player1.tempMark; // test marks
-  console.log(gameBoardArray); // test log
-  
+ 
+
+
+
+  // Setting up game board START
+  //
+  for (let i = 0; i < rows; i++) {
+    gameBoard[i] = [];
+    for (let j = 0; j < columns; j++) {
+      gameBoard[i][j] = 0;
+    }
+  }
+  //
+  // Setting up game board END
+
+
+  function placeMark () { // place a mark on the board. REQUIRES => (PLAYER)(ROW)(COLUMN)
+    const currentPlayer = prompt("Who's turn is it?");
+    const row = prompt("row?");
+    const column = prompt("column?");
+    let player;
+    if (currentPlayer === "2") {
+      player = player2;
+    } else if (currentPlayer === "1"){
+      player = player1;
+    } else {
+      console.error("error");
+      
+    }
+    gameBoard[row][column] = player.identifier; // player not yet defined
+  }
+
+  function logBoard() {
+    console.log(gameBoard);
+  }
+
+  return { placeMark, logBoard, showPlayers };
+
 })();
 
-
-
-
-//
-// game flow / logic / win determination
-//
-
-
-
-
-//
-// display controller
-//
-
-
-//
-//
-//
-//
-// Required Functionality
-//
-//  >> Choose your MARK
-//  >> Choose your PLAYER NAME
-//  >> Who starts? > random
+gameInit.showPlayers();
+// gameInit.placeMark();
+// gameInit.logBoard();
 
 
 
