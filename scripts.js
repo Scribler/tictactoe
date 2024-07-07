@@ -83,9 +83,3 @@ gameInit.showPlayers();
 // gameInit.placeMark();
 // gameInit.logBoard();
 
-console.log("testing2")
-console.log("testing2")
-console.log("testing2")
-console.log("testing2")
-console.log("testing2")
-console.log("testing2")
