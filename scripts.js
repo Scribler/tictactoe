@@ -1,3 +1,10 @@
+// Assignment Instructions
+
+// Objects
+//  - gameBoard
+//  - players
+//  - game flow
+
 console.log("hello world");
 
 // game board
