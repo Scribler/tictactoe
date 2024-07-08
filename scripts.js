@@ -3,20 +3,30 @@
 // Objects
 //  - gameBoard
 //  - players
-//  - game flow
+//  - playRound
 
-console.log("hello world");
 
-// game board
+
+//
+//
+//
+//
+//
+// GAME BOARD
+//
+//
+//
+//
+//
 
 const gameInit = (function(){
   // Variables
   const gameBoard = [];
   const rows = 3;
   const columns = 3;
-  const [player1, player2] = playerSetup();
+  const [player1, player2] = playerSetup(); // assign the returned players to usable variables
   
-  function playerSetup() {
+  function playerSetup() { // set player info and return array of players     **inputs need to be sanitised**
     let playerOneDefaultOrder = 0;
     let playerTwoDefaultOrder = 1;
     const player1 = {
@@ -85,6 +95,34 @@ const gameInit = (function(){
   return { placeMark, logBoard, showPlayers };
 
 })();
+
+//
+//
+//
+//
+//
+// PLAY ROUND
+//
+//
+//
+//
+//
+
+// "To start round 'click' who will go first!" [player1] [player2] [random]
+// "CLICK" - start round (player info from fields added to player objects & game board generated)
+
+// player 1 place mark
+// player 2 place mark
+//    if row > "congratulations 'winner' you won!"
+//    if board Full && no row > "it's a draw!"
+// reset button (keeps names and marks)
+
+
+
+
+
+
+
 
 gameInit.showPlayers();
 // gameInit.placeMark();
