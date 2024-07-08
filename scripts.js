@@ -19,7 +19,7 @@
 //
 //
 
-const gameInit = (function(){
+const GameInit = (function(){
   // Variables
   const gameBoard = [];
   const rows = 3;
@@ -34,7 +34,7 @@ const gameInit = (function(){
       //
       // name: prompt("Player 1, what is your name?"),
       // mark: prompt("Player 1, what is your mark?"),
-      name: "Bob", // temp name
+      name: "Player 1", // temp name
       mark: "X",   // temp mark
       identifier: 1,
       playOrder: playerOneDefaultOrder,
@@ -44,7 +44,7 @@ const gameInit = (function(){
       //
       // name: prompt("Player 2, what is your name?"),
       // mark: prompt("Player 2, what is your mark?"),
-      name: "James", // temp name
+      name: "Player 2", // temp name
       mark: "O",     // temp mark
       identifier: 2,
       playOrder: playerTwoDefaultOrder,
@@ -124,7 +124,7 @@ const gameInit = (function(){
 
 
 
-gameInit.showPlayers();
-// gameInit.placeMark();
-// gameInit.logBoard();
+GameInit.showPlayers();
+// GameInit.placeMark();
+// GameInit.logBoard();
 
