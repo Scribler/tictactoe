@@ -1,24 +1,6 @@
-// Assignment Instructions
-
-// Objects
-//  - gameBoard
-//  - players
-//  - playRound
-
-
-
-//
-//
-//
-//
 //
 // GAME BOARD
 //
-//
-//
-//
-//
-
 const GameInit = (function(){
   // Variables
   const gameBoard = [];
@@ -29,21 +11,15 @@ const GameInit = (function(){
   function playerSetup() { // set player info and return array of players     **inputs need to be sanitised**
     let playerOneDefaultOrder = 0;
     let playerTwoDefaultOrder = 1;
+    
     const player1 = {
-      // **[IMPORTANT]** Name and mark need to be sanitised
-      //
-      // name: prompt("Player 1, what is your name?"),
-      // mark: prompt("Player 1, what is your mark?"),
       name: "Player 1", // temp name
       mark: "X",   // temp mark
       identifier: 1,
       playOrder: playerOneDefaultOrder,
     }
+    
     const player2 = {
-      // **[IMPORTANT]** Name and mark need to be sanitised
-      //
-      // name: prompt("Player 2, what is your name?"),
-      // mark: prompt("Player 2, what is your mark?"),
       name: "Player 2", // temp name
       mark: "O",     // temp mark
       identifier: 2,
@@ -51,25 +27,13 @@ const GameInit = (function(){
     }
     return [player1, player2];
   }
-
-  function showPlayers() {
-    console.log(player1);
-    console.log(player2);
-  }
-
-
   
-
-  // Setting up game board START
-  //
-  for (let i = 0; i < rows; i++) {
+  for (let i = 0; i < rows; i++) { // Setting up game board START
     gameBoard[i] = [];
     for (let j = 0; j < columns; j++) {
       gameBoard[i][j] = 0;
     }
   }
-  //
-  // Setting up game board END
 
 
   function placeMark () { // place a mark on the board. REQUIRES => (PLAYER)(ROW)(COLUMN)
