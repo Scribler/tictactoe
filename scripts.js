@@ -1,7 +1,7 @@
 //
 // GAME BOARD
 //
-const GameInit = (function(){
+const GameBoard = (function(){
   // Variables
   const gameBoard = [];
   const rows = 3;
@@ -60,26 +60,8 @@ const GameInit = (function(){
 
 })();
 
-//
-//
-//
-//
-//
-// PLAY ROUND
-//
-//
-//
-//
-//
 
-// "To start round 'click' who will go first!" [player1] [player2] [random]
-// "CLICK" - start round (player info from fields added to player objects & game board generated)
 
-// player 1 place mark
-// player 2 place mark
-//    if row > "congratulations 'winner' you won!"
-//    if board Full && no row > "it's a draw!"
-// reset button (keeps names and marks)
 
 
 
@@ -92,3 +74,27 @@ GameInit.showPlayers();
 // GameInit.placeMark();
 // GameInit.logBoard();
 
+
+
+// *** BluePrint ***
+
+// * Objects *
+//  - gameBoard
+//  - game
+//  - player
+//
+
+
+// * LOGIC *
+
+// PLAY ROUND
+//
+
+// "To start round 'click' who will go first!" [player1] [player2] [random]
+// "CLICK" - start round (player info from fields added to player objects & game board generated)
+
+// player 1 place mark
+// player 2 place mark
+//    if row > "congratulations 'winner' you won!"
+//    if board Full && no row > "it's a draw!"
+// reset button (keeps names and marks)
