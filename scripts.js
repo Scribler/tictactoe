@@ -1,5 +1,5 @@
 //
-// GAME BOARD
+// ** GAME BOARD **
 //
 const GameBoard = (function(){
   // Variables
@@ -33,7 +33,7 @@ const GameBoard = (function(){
 //
 // PLAYERS
 //
-function players() { // set player info and return array of players     **inputs need to be sanitised**
+function players() { // collect player info and return array of players     **inputs need to be sanitised**
   let playerOneDefaultOrder = 0;
   let playerTwoDefaultOrder = 1;
   
@@ -54,25 +54,18 @@ function players() { // set player info and return array of players     **inputs
 }
 
 //
-// DISPLAY
+// ** DISPLAY ** 
 //
-function gameDisplay(){
-  function printScreen(){
-    console.log("printScreen");
-  }
-  return { printScreen };
-}
+
+// DISPLAY game board in DOM
+// UPDATE game board when needed
 
 //
-// GAME FLOW
+// ** GAME FLOW ** 
 //
 function game() {
-  const [player1, player2] = players(); // assign the returned players to usable variables
-  GameBoard.placeMark(player1, 0, 1);
-  GameBoard.placeMark(player2, 1, 1);
-  GameBoard.placeMark(player1, 2, 1);
-  GameBoard.logBoard();
-  gameDisplay.printScreen();
+  const [player1, player2] = players(); // GET "player1" and "player2"
+  GameBoard.logBoard(); // print game board
 }
 
 game();
