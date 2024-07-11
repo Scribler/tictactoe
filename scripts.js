@@ -17,7 +17,8 @@ const GameBoard = (function(){
   }
 
   function placeMark(player, row, column) { 
-    board[row][column] = player.identifier; 
+    // board[row][column] = player.identifier; 
+    board[row][column] = player.mark; // temp
   }
 
   function logBoard() { // log the game board readably
@@ -66,6 +67,21 @@ function players() { // collect player info and return array of players     **in
 function game() {
   const [player1, player2] = players(); // GET "player1" and "player2"
   GameBoard.logBoard(); // print game board
+  let currentPlayer = prompt("Who wants to go first?");
+  
+  switch (currentPlayer) {
+    case "1":
+      currentPlayer = player1;
+      console.log(`${currentPlayer.name}, It's your turn.`);
+      break;
+    case "":
+      currentPlayer = player2;
+      console.log(`${currentPlayer.name}, It's your turn.`);
+      break;
+    case "":
+      currentPlayer = (Math.ceil((Math.random() * 2)));
+      console.log(`${currentPlayer.name}, It's your turn.`);
+      break;
+  }
 }
-
 game();
