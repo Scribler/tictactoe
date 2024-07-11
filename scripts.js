@@ -51,6 +51,7 @@ function players() { // collect player info and return array of players     **in
     identifier: 2,
     playOrder: playerTwoDefaultOrder,
   }
+
   return [player1, player2];
 }
 
@@ -66,22 +67,35 @@ function players() { // collect player info and return array of players     **in
 //
 function game() {
   const [player1, player2] = players(); // GET "player1" and "player2"
-  GameBoard.logBoard(); // print game board
-  let currentPlayer = prompt("Who wants to go first?");
-  
-  switch (currentPlayer) {
-    case "1":
-      currentPlayer = player1;
-      console.log(`${currentPlayer.name}, It's your turn.`);
-      break;
-    case "":
-      currentPlayer = player2;
-      console.log(`${currentPlayer.name}, It's your turn.`);
-      break;
-    case "":
-      currentPlayer = (Math.ceil((Math.random() * 2)));
-      console.log(`${currentPlayer.name}, It's your turn.`);
-      break;
+  let currentPlayer = "";
+  function getFirstPlayer() {
+    currentPlayer = prompt("Who wants to go first? Enter 1 for player1, Enter 2 for player2, Leave blank for random.");
+    if (currentPlayer !== "1" && currentPlayer !== "2") { // any entry other than 1 or 2 generates a random current player
+      currentPlayer = (Math.ceil(Math.random() * 2)).toString();
+    };
+    
+    switch (currentPlayer) {
+      case ("1"):
+        currentPlayer = player1;
+        console.log(`${currentPlayer.name}, It's your turn.`);
+        break;
+      case ("2"):
+        currentPlayer = player2;
+        console.log(`${currentPlayer.name}, It's your turn.`);
+        break;
+      default:
+        console.log("something went wrong");
+    }
+    return;
   }
+  //
+  // game flow >>
+  //
+  GameBoard.logBoard(); // print game board
+  // getFirstPlayer();
+  
+  
 }
+
+// RUN GAME
 game();
