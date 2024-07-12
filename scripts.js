@@ -11,12 +11,8 @@ const GameBoard = (function(){
   for (let i = 0; i < rows; i++) { 
     board[i] = [];
     for (let j = 0; j < columns; j++) {
-      // board[i][j] = 0; // use this value for production
-      board[i][j] = i; // only use for testing
-      board[i][j] = j; // only use for testing
-      board[i][j] = i*3+j; // only use for testing
       board[i][j] = {
-        cellName: i*3+j, // only use for testing
+        cellName: i*3+j, // create cells from 0 - 8
         marker: 0,
       }
     }
@@ -175,21 +171,14 @@ function game() {
 }
 
 // RUN GAME
-game();
+// game();
 
 
-//
-//
-//
-//
-// NEXT TO DO
-
-// - build 'win checking' logic
-// - build name and mark getting
-// - sanitise inputs
-// - build display function
-
-
+// testing
+const numToTest = "12345678";
+const regex = /345|78/g;
+const found = numToTest.match(regex);
+console.log(found);
 
 
 
