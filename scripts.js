@@ -175,10 +175,23 @@ function game() {
 
 
 // testing
-const numToTest = "12345678";
-const regex = /345|78/g;
-const found = numToTest.match(regex);
-console.log(found);
+const winCombinations = [ 012,345,678,036,147,258,048,246 ]
+
+const numsToTest = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const newString = numsToTest.join('');
+
+const numToTest = 345;
+const convertToString = numToTest.toString();
+const numsToFind = convertToString.split('');
+const regExNums = numsToFind.join("|");
+console.log(regExNums);
+
+const secondRegex = new RegExp(regExNums,"g");
+console.log(secondRegex)
+
+const found = newString.match(secondRegex);
+console.log(`found = ${found.length}`);
+
 
 
 
