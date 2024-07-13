@@ -25,46 +25,31 @@ const GameBoard = (function(){
       board[firstCoordinate][secondCoordinate].marker = player.mark; // temp
       player.playedCells.push((board[firstCoordinate][secondCoordinate]).cellName)
       console.log(player.playedCells);
+      // if (winCheck(player)) {
+      //   console.log(`${player.name} is the winner!`);
+      // }
     } else {
       placeMark(player);
     }
   }
   
-// test
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // check for winning combinations and return false OR winning player?
+  // check for winning combinations and return false OR winning player
   function winCheck(player){
-    const winCombinations = [ 012,345,678,036,147,258,048,246 ]
-    console.log("Win Check");
+    const winCombinations = [ '012','345','678','036','147','258','048','246' ];
+    playedCells = player.playedCells.join("");
+    let winner = false;
+    
     winCombinations.forEach(element => {
-      // playedCells.contains > element (use regex) >> win
-      
+      winArr = element.split("");
+      winRegExString = winArr.join("|");
+      winRegEx = new RegExp(winRegExString, "g");
+      const found = playedCells.match(winRegEx);
+      if (found !== null && found.length === 3) {
+        winner = player;
+      }
     });
+    return winner;
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
   // show gameboard's current state in console
   function logBoard() { // log the game board readably
@@ -149,6 +134,10 @@ function game() {
         break;
       }
       GameBoard.placeMark(currentPlayer);
+      if(GameBoard.winCheck(currentPlayer)) {
+        console.log(`${currentPlayer.name} is the winner!`);
+        break;
+      };
       switch(currentPlayer.identifier) { // change player when turn is done
         case 1:
           currentPlayer = player2;
@@ -167,30 +156,10 @@ function game() {
   
   getFirstPlayer();
   playRound();
-  // GameBoard.winCheck();
 }
 
 // RUN GAME
-// game();
-
-
-// testing
-const winCombinations = [ 012,345,678,036,147,258,048,246 ]
-
-const numsToTest = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const newString = numsToTest.join('');
-
-const numToTest = 345;
-const convertToString = numToTest.toString();
-const numsToFind = convertToString.split('');
-const regExNums = numsToFind.join("|");
-console.log(regExNums);
-
-const secondRegex = new RegExp(regExNums,"g");
-console.log(secondRegex)
-
-const found = newString.match(secondRegex);
-console.log(`found = ${found.length}`);
+game();
 
 
 
