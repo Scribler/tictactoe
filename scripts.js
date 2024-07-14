@@ -3,17 +3,23 @@
 //
 const GameBoard = (function(){
   // Variables
-  const board = [];
+  let board = [];
   const rows = 3;
   const columns = 3;
   const [player1, player2] = players(); // assign the returned players to usable variables
   // Setting up game board START
-  for (let i = 0; i < rows; i++) { 
-    board[i] = [];
-    for (let j = 0; j < columns; j++) {
-      board[i][j] = {
-        cellName: i*3+j, // create cells from 0 - 8
-        marker: 0,
+  function boardReset() {
+    board = [];
+  }
+  function createGameBoard() {
+    boardReset();
+    for (let i = 0; i < rows; i++) { 
+      board[i] = [];
+      for (let j = 0; j < columns; j++) {
+        board[i][j] = {
+          cellName: i*3+j, // create cells from 0 - 8
+          marker: 0,
+        }
       }
     }
   }
@@ -61,21 +67,18 @@ const GameBoard = (function(){
       console.log(row);     // print rows
     }
   }
-  return { placeMark, logBoard, winCheck};
+  return { placeMark, logBoard, winCheck, createGameBoard};
 })();
 
 //
 // PLAYERS
 //
 function players() { // collect player info and return array of players     **inputs need to be sanitised**
-  let playerOneDefaultOrder = 0;
-  let playerTwoDefaultOrder = 1;
   // player one
   const player1 = {
     name: "Player 1", // temp name
     mark: "X",   // temp mark
     identifier: 1,
-    playOrder: playerOneDefaultOrder,
     playedCells: [],
   }
   // player two
@@ -83,7 +86,6 @@ function players() { // collect player info and return array of players     **in
     name: "Player 2", // temp name
     mark: "O",     // temp mark
     identifier: 2,
-    playOrder: playerTwoDefaultOrder,
     playedCells: [],
   }
   return [player1, player2];
@@ -102,6 +104,9 @@ function players() { // collect player info and return array of players     **in
 function game() {
   // load players
   const [player1, player2] = players(); // GET "player1" and "player2"
+  player1.playedCells = [];
+  player2.playedCells = [];
+  GameBoard.createGameBoard();
   // store current player
   let currentPlayer = "";
   // who's turn to start
@@ -136,6 +141,12 @@ function game() {
       GameBoard.placeMark(currentPlayer);
       if(GameBoard.winCheck(currentPlayer)) {
         console.log(`${currentPlayer.name} is the winner!`);
+        const playAgain = prompt("Would you like to play again? (y)? or (n)?");
+        if (playAgain === "y") {
+          game()
+        } else {
+          break;
+        }
         break;
       };
       switch(currentPlayer.identifier) { // change player when turn is done
@@ -153,7 +164,6 @@ function game() {
   //
   // game flow >>
   //
-  
   getFirstPlayer();
   playRound();
 }
