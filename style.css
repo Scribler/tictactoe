@@ -189,6 +189,37 @@ button:hover {
   border-color: #0a58ca;
 }
 
+/*tic tac toe*/
+
+#gameBoard {
+  width: 18em;
+  height: 18em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.gameBox {
+  border: 5px solid black;
+  height: 6em;
+  width: 6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.gameBox:hover {
+  background-color: teal;
+}
+.gameBox:active {
+  background-color: yellow;
+}
+.mark {
+  display: inline-block;
+  font-size: 45px;
+  justify: center;
+  
+}
 
 
 

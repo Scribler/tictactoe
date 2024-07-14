@@ -27,13 +27,9 @@ const GameBoard = (function(){
   function placeMark(player) { 
     let [firstCoordinate, secondCoordinate] = prompt(`${player.name}, Where would you like to place your mark?`).split("");
     if (board[firstCoordinate][secondCoordinate].marker === 0) {
-    // board[row][column] = player.identifier;
       board[firstCoordinate][secondCoordinate].marker = player.mark; // temp
       player.playedCells.push((board[firstCoordinate][secondCoordinate]).cellName)
       console.log(player.playedCells);
-      // if (winCheck(player)) {
-      //   console.log(`${player.name} is the winner!`);
-      // }
     } else {
       placeMark(player);
     }
@@ -59,9 +55,6 @@ const GameBoard = (function(){
 
   // show gameboard's current state in console
   function logBoard() { // log the game board readably
-    // console.log(board[0]);
-    // console.log(board[1]);
-    // console.log(board[2]);
     for (let i = 0; i < board.length; i++) {
       const row = board[i]; // store rows
       console.log(row);     // print rows
@@ -71,7 +64,7 @@ const GameBoard = (function(){
 })();
 
 //
-// PLAYERS
+// ** PLAYERS ** 
 //
 function players() { // collect player info and return array of players     **inputs need to be sanitised**
   // player one
@@ -98,19 +91,34 @@ function players() { // collect player info and return array of players     **in
 // DISPLAY game board in DOM
 // UPDATE game board when needed
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //
 // ** GAME FLOW ** 
 //
 function game() {
   // load players
   const [player1, player2] = players(); // GET "player1" and "player2"
-  player1.playedCells = [];
-  player2.playedCells = [];
-  GameBoard.createGameBoard();
-  // store current player
+  player1.playedCells = []; // reset played cells
+  player2.playedCells = []; // reset played cells
+  GameBoard.createGameBoard(); // creat/reset game board
   let currentPlayer = "";
-  // who's turn to start
-  function getFirstPlayer() {
+  
+  function getFirstPlayer() { // who's turn to start
     currentPlayer = prompt("Who wants to go first? Enter 1 for player1, Enter 2 for player2, Leave blank for random.");
     if (currentPlayer !== "1" && currentPlayer !== "2") { // any entry other than 1 or 2 generates a random current player
       currentPlayer = (Math.ceil(Math.random() * 2)).toString();
