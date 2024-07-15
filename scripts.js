@@ -101,14 +101,16 @@ function players() { // collect player info and return array of players     **in
 // call it's contents in 'GAME FLOW'
 
 function display(){
-
-  // 1) BUTTONS -> 1 Player // 2 Players
-  
-  // 2) FORM -> Player/Player1 NAME & MARK >>> BUTTON - continue / play(if 1 player game)
-  
-
-  // display BOARD SQUARE && MARK DIV
-  // display MARK
+  const gameBoard = document.getElementById('gameBoard');
+  for (let i = 0; i < 9; i++) {
+    const gameBox = document.createElement('div');
+    const mark = document.createElement('div');
+    gameBox.classList.add('gameBox');
+    mark.classList.add('mark')
+    mark.setAttribute('id', `mark${i}`);
+    gameBox.appendChild(mark);
+    gameBoard.appendChild(gameBox);
+  }
 }
 
 
@@ -195,6 +197,7 @@ function game() {
 //
 // RUN GAME
 //
+display()
 game();
 
 
