@@ -64,6 +64,10 @@ const GameBoard = (function(){
 })();
 
 //
+
+//
+
+//
 // ** PLAYERS ** 
 //
 function players() { // collect player info and return array of players     **inputs need to be sanitised**
@@ -85,11 +89,27 @@ function players() { // collect player info and return array of players     **in
 }
 
 //
+
+//
+
+//
 // ** DISPLAY ** 
 //
 
-// DISPLAY game board in DOM
-// UPDATE game board when needed
+// Display object
+
+// call it's contents in 'GAME FLOW'
+
+function display(){
+
+  // 1) BUTTONS -> 1 Player // 2 Players
+  
+  // 2) FORM -> Player/Player1 NAME & MARK >>> BUTTON - continue / play(if 1 player game)
+  
+
+  // display BOARD SQUARE && MARK DIV
+  // display MARK
+}
 
 
 
@@ -99,13 +119,9 @@ function players() { // collect player info and return array of players     **in
 
 
 
+//
 
-
-
-
-
-
-
+//
 
 //
 // ** GAME FLOW ** 
@@ -169,14 +185,16 @@ function game() {
       }
     }
   }
-  //
-  // game flow >>
-  //
+  // game flow
   getFirstPlayer();
   playRound();
 }
 
+
+
+//
 // RUN GAME
+//
 game();
 
 
