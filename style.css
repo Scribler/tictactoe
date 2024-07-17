@@ -196,7 +196,7 @@ button:hover {
   height: 18em;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .gameBox {

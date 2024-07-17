@@ -77,6 +77,7 @@ function players() { // collect player info and return array of players     **in
     mark: "X",   // temp mark
     identifier: 1,
     playedCells: [],
+    // playedCells: ['4', '5', '6', '7'], // testing array
   }
   // player two
   const player2 = {
@@ -84,6 +85,7 @@ function players() { // collect player info and return array of players     **in
     mark: "O",     // temp mark
     identifier: 2,
     playedCells: [],
+    // playedCells: [, '2', '3', '8', '0'], // testing array
   }
   return [player1, player2];
 }
@@ -95,31 +97,35 @@ function players() { // collect player info and return array of players     **in
 //
 // ** DISPLAY ** 
 //
-
-// Display object
-
-// call it's contents in 'GAME FLOW'
-
 function display(){
-  const gameBoard = document.getElementById('gameBoard');
+  const [player1, player2] = players(); // GET "player1" and "player2"
+  const gameDisplay = document.getElementById('gameBoard');
+  // gameBoard.innerHTML = "";
   for (let i = 0; i < 9; i++) {
+    // making the physical elements
     const gameBox = document.createElement('div');
     const mark = document.createElement('div');
     gameBox.classList.add('gameBox');
     mark.classList.add('mark')
     mark.setAttribute('id', `mark${i}`);
+
+    // setting the inner value for each block
+    let blockText = "";
+    if (player1.playedCells.includes(i.toString())) {
+      blockText = player1.mark;
+    } else if (player2.playedCells.includes(i.toString())) {
+      blockText = player2.mark;
+    } else {
+      blockText = "";
+    }
+    mark.innerText = blockText;
+
+    // putting the pieces together
     gameBox.appendChild(mark);
-    gameBoard.appendChild(gameBox);
+    gameDisplay.appendChild(gameBox);
   }
+  console.log("display ran");
 }
-
-
-
-
-
-
-
-
 
 //
 
@@ -129,6 +135,7 @@ function display(){
 // ** GAME FLOW ** 
 //
 function game() {
+  console.log("starting game");
   // load players
   const [player1, player2] = players(); // GET "player1" and "player2"
   player1.playedCells = []; // reset played cells
@@ -197,9 +204,8 @@ function game() {
 //
 // RUN GAME
 //
-display()
-game();
-
+display();
+game()
 
 
 
