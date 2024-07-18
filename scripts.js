@@ -97,10 +97,10 @@ function players() { // collect player info and return array of players     **in
 //
 // ** DISPLAY ** 
 //
-function display(){
+function display(){ // display the current state of the game... in theory
   const [player1, player2] = players(); // GET "player1" and "player2"
   const gameDisplay = document.getElementById('gameBoard');
-  // gameBoard.innerHTML = "";
+  gameBoard.innerHTML = "";
   for (let i = 0; i < 9; i++) {
     // making the physical elements
     const gameBox = document.createElement('div');
