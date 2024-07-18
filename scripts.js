@@ -97,10 +97,13 @@ function players() { // collect player info and return array of players     **in
 //
 // ** DISPLAY ** 
 //
-function display(){ // display the current state of the game... in theory
+function display(flowText){ // display the current state of the game... in theory
   const [player1, player2] = players(); // GET "player1" and "player2"
-  const gameDisplay = document.getElementById('gameBoard');
+  const gameDisplay = document.getElementById('gameBoard'); // need another div layer here.  The cells are interfering with the intro text.
   gameBoard.innerHTML = "";
+  const gameFlowText = document.createElement("h3");
+  // gameFlowText.innerText = flowText; // production
+  gameFlowText.innerText = "PlaceHolderText"; // testing only
   for (let i = 0; i < 9; i++) {
     // making the physical elements
     const gameBox = document.createElement('div');
@@ -122,6 +125,7 @@ function display(){ // display the current state of the game... in theory
 
     // putting the pieces together
     gameBox.appendChild(mark);
+    gameDisplay.appendChild(gameFlowText);
     gameDisplay.appendChild(gameBox);
   }
   console.log("display ran");
