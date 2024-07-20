@@ -191,7 +191,16 @@ button:hover {
 
 /*tic tac toe*/
 
-#gameBoard {
+#gameArea{
+  width: 20em;
+  height: 30em;
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
+  /*flex-direction: row;*/
+  border: 1px solid blue;
+  padding: 15px;
+}
+#gameBoard{
   width: 18em;
   height: 18em;
   display: flex;
@@ -199,7 +208,12 @@ button:hover {
   flex-direction: row;
 }
 
-.gameBox {
+.gameFlowText {
+  text-align: center;
+  margin: 20px;
+}
+
+.gameCell {
   border: 5px solid black;
   height: 6em;
   width: 6em;
@@ -208,10 +222,10 @@ button:hover {
   justify-content: center;
 
 }
-.gameBox:hover {
+.gameCell:hover {
   background-color: teal;
 }
-.gameBox:active {
+.gameCell:active {
   background-color: yellow;
 }
 .mark {

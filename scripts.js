@@ -98,17 +98,24 @@ function players() { // collect player info and return array of players     **in
 // ** DISPLAY ** 
 //
 function display(flowText){ // display the current state of the game... in theory
+
+
   const [player1, player2] = players(); // GET "player1" and "player2"
-  const gameDisplay = document.getElementById('gameBoard'); // need another div layer here.  The cells are interfering with the intro text.
+  const gameDisplay = document.getElementById('gameArea'); // need another div layer here.  The cells are interfering with the intro text.
+  gameDisplay.setAttribute('id', 'gameArea');
+  
+  const gameBoard = document.createElement('div');
+  gameBoard.setAttribute('id', 'gameBoard');
   gameBoard.innerHTML = "";
   const gameFlowText = document.createElement("h3");
+  gameFlowText.classList.add('gameFlowText');
   // gameFlowText.innerText = flowText; // production
   gameFlowText.innerText = "PlaceHolderText"; // testing only
   for (let i = 0; i < 9; i++) {
     // making the physical elements
-    const gameBox = document.createElement('div');
+    const gameCell= document.createElement('div');
     const mark = document.createElement('div');
-    gameBox.classList.add('gameBox');
+    gameCell.classList.add('gameCell');
     mark.classList.add('mark')
     mark.setAttribute('id', `mark${i}`);
 
@@ -124,9 +131,10 @@ function display(flowText){ // display the current state of the game... in theor
     mark.innerText = blockText;
 
     // putting the pieces together
-    gameBox.appendChild(mark);
+    gameCell.appendChild(mark);
+    gameBoard.appendChild(gameCell);
     gameDisplay.appendChild(gameFlowText);
-    gameDisplay.appendChild(gameBox);
+    gameDisplay.appendChild(gameBoard);
   }
   console.log("display ran");
 }
@@ -145,10 +153,11 @@ function game() {
   player1.playedCells = []; // reset played cells
   player2.playedCells = []; // reset played cells
   GameBoard.createGameBoard(); // creat/reset game board
-  let currentPlayer = "";
+  // let currentPlayer = ""; // production
+  let currentPlayer = "1"; // testing
   
   function getFirstPlayer() { // who's turn to start
-    currentPlayer = prompt("Who wants to go first? Enter 1 for player1, Enter 2 for player2, Leave blank for random.");
+    // currentPlayer = prompt("Who wants to go first? Enter 1 for player1, Enter 2 for player2, Leave blank for random.");
     if (currentPlayer !== "1" && currentPlayer !== "2") { // any entry other than 1 or 2 generates a random current player
       currentPlayer = (Math.ceil(Math.random() * 2)).toString();
     };
