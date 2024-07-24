@@ -97,46 +97,72 @@ function players() { // collect player info and return array of players     **in
 //
 // ** DISPLAY ** 
 //
-function display(flowText){ // display the current state of the game... in theory
-
-
-  const [player1, player2] = players(); // GET "player1" and "player2"
-  const gameDisplay = document.getElementById('gameArea'); // need another div layer here.  The cells are interfering with the intro text.
-  gameDisplay.setAttribute('id', 'gameArea');
-  
-  const gameBoard = document.createElement('div');
-  gameBoard.setAttribute('id', 'gameBoard');
-  gameBoard.innerHTML = "";
-  const gameFlowText = document.createElement("h3");
+function display(){ // display the current state of the game
+  // Getting game area
+  const gameArea = document.querySelector('.gameArea'); // Framed area
+  // Creating game elements
+      // text area
+  const gameFlowText = document.createElement('div'); // Instructions
+  const playerNameBox = document.createElement('input');
+  const submitNameButton = document.createElement('button');
+      // board
+  const gameBoard = document.createElement('div'); // Game Board
+  const gameCell = document.createElement('div'); // GameBoardCell
+  const mark = document.createElement('div'); // mark
+  // adding styles
   gameFlowText.classList.add('gameFlowText');
-  // gameFlowText.innerText = flowText; // production
-  gameFlowText.innerText = "PlaceHolderText"; // testing only
-  for (let i = 0; i < 9; i++) {
-    // making the physical elements
-    const gameCell= document.createElement('div');
-    const mark = document.createElement('div');
-    gameCell.classList.add('gameCell');
-    mark.classList.add('mark')
-    mark.setAttribute('id', `mark${i}`);
+  gameBoard.classList.add('gameBoard');
+  // adding content
+  gameFlowText.textContent = "Player ##, enter your name."; // changeable
+  submitNameButton.textContent = "Submit";
+  gameBoard.textContent = "test";
+  // assembly
+      // gameFlowText
+  gameFlowText.appendChild(playerNameBox);
+  gameFlowText.appendChild(submitNameButton);
+      // game Area
+  gameArea.appendChild(gameFlowText);
+  gameArea.appendChild(gameBoard);
 
-    // setting the inner value for each block
-    let blockText = "";
-    if (player1.playedCells.includes(i.toString())) {
-      blockText = player1.mark;
-    } else if (player2.playedCells.includes(i.toString())) {
-      blockText = player2.mark;
-    } else {
-      blockText = "";
-    }
-    mark.innerText = blockText;
 
-    // putting the pieces together
-    gameCell.appendChild(mark);
-    gameBoard.appendChild(gameCell);
-    gameDisplay.appendChild(gameFlowText);
-    gameDisplay.appendChild(gameBoard);
-  }
-  console.log("display ran");
+
+  // const [player1, player2] = players(); // GET "player1" and "player2"
+  // const gameDisplay = document.getElementById('gameArea'); // need another div layer here.  The cells are interfering with the intro text.
+  // gameDisplay.setAttribute('id', 'gameArea');
+  //
+  // const gameBoard = document.createElement('div');
+  // gameBoard.setAttribute('id', 'gameBoard');
+  // gameBoard.innerHTML = "";
+  // const gameFlowText = document.createElement("h3");
+  // gameFlowText.classList.add('gameFlowText');
+  // // gameFlowText.innerText = flowText; // production
+  // gameFlowText.innerText = "PlaceHolderText"; // testing only
+  // for (let i = 0; i < 9; i++) {
+  //   // making the physical elements
+  //   const gameCell= document.createElement('div');
+  //   const mark = document.createElement('div');
+  //   gameCell.classList.add('gameCell');
+  //   mark.classList.add('mark')
+  //   mark.setAttribute('id', `mark${i}`);
+  //
+  //   // setting the inner value for each block
+  //   let blockText = "";
+  //   if (player1.playedCells.includes(i.toString())) {
+  //     blockText = player1.mark;
+  //   } else if (player2.playedCells.includes(i.toString())) {
+  //     blockText = player2.mark;
+  //   } else {
+  //     blockText = "";
+  //   }
+  //   mark.innerText = blockText;
+  //
+  //   // putting the pieces together
+  //   gameCell.appendChild(mark);
+  //   gameBoard.appendChild(gameCell);
+  //   gameDisplay.appendChild(gameFlowText);
+  //   gameDisplay.appendChild(gameBoard);
+  // }
+  // console.log("display ran");
 }
 
 //
@@ -154,7 +180,7 @@ function game() {
   player2.playedCells = []; // reset played cells
   GameBoard.createGameBoard(); // creat/reset game board
   // let currentPlayer = ""; // production
-  let currentPlayer = "1"; // testing
+  let currentPlayer = "0"; // testing
   
   function getFirstPlayer() { // who's turn to start
     // currentPlayer = prompt("Who wants to go first? Enter 1 for player1, Enter 2 for player2, Leave blank for random.");
@@ -218,7 +244,7 @@ function game() {
 // RUN GAME
 //
 display();
-game()
+// game();
 
 
 
