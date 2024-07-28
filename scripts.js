@@ -102,26 +102,31 @@ function display(){ // display the current state of the game
   const gameArea = document.querySelector('.gameArea'); // Framed area
   // Creating game elements
       // text area
-  const gameFlowText = document.createElement('div'); // Instructions
+  const gameFlow = document.createElement('div'); // Instructions
+  const gameFlowText = document.createElement('p'); // Instructions
   const playerNameBox = document.createElement('input');
+  const playerMarkChoice = document.createElement('input');
   const submitNameButton = document.createElement('button');
       // board
   const gameBoard = document.createElement('div'); // Game Board
   const gameCell = document.createElement('div'); // GameBoardCell
   const mark = document.createElement('div'); // mark
   // adding styles
+  gameFlow.classList.add('gameFlow');
   gameFlowText.classList.add('gameFlowText');
   gameBoard.classList.add('gameBoard');
+  submitNameButton.classList.add('submitNameButton');
   // adding content
-  gameFlowText.textContent = "Player ##, enter your name."; // changeable
+  gameFlowText.innerHTML = "Player ##, enter your name."; // changeable
   submitNameButton.textContent = "Submit";
-  gameBoard.textContent = "test";
+  gameBoard.textContent = "b";
   // assembly
-      // gameFlowText
-  gameFlowText.appendChild(playerNameBox);
-  gameFlowText.appendChild(submitNameButton);
+      // gameFlow
+  gameFlow.appendChild(gameFlowText);
+  gameFlow.appendChild(playerNameBox);
+  gameFlow.appendChild(submitNameButton);
       // game Area
-  gameArea.appendChild(gameFlowText);
+  gameArea.appendChild(gameFlow);
   gameArea.appendChild(gameBoard);
 
 
