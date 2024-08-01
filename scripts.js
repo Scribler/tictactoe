@@ -97,16 +97,23 @@ function players() { // collect player info and return array of players     **in
 //
 // ** DISPLAY ** 
 //
-function display(){ // display the current state of the game
+const display = function(){ // display the current state of the game
   // Getting game area
   const gameArea = document.querySelector('.gameArea'); // Framed area
   // Creating game elements
       // text area
   const gameFlow = document.createElement('div'); // Instructions
   const gameFlowText = document.createElement('p'); // Instructions
-  const playerNameBox = document.createElement('input');
-  const playerMarkChoice = document.createElement('input');
-  const submitNameButton = document.createElement('button');
+  const playerNameBox = document.createElement('input'); // Name
+  const playerMarkDiv = document.createElement('div'); // Player mark button container
+        // mark radio button components.
+
+
+
+
+
+
+  const submitButton = document.createElement('button');
       // board
   const gameBoard = document.createElement('div'); // Game Board
   const gameCell = document.createElement('div'); // GameBoardCell
@@ -115,21 +122,24 @@ function display(){ // display the current state of the game
   gameFlow.classList.add('gameFlow');
   gameFlowText.classList.add('gameFlowText');
   gameBoard.classList.add('gameBoard');
-  submitNameButton.classList.add('submitNameButton');
+  submitButton.classList.add('submitButton');
   // adding content
   gameFlowText.innerHTML = "Player ##, enter your name."; // changeable
-  submitNameButton.textContent = "Submit";
+  submitButton.textContent = "Submit";
   gameBoard.textContent = "b";
   // assembly
       // gameFlow
   gameFlow.appendChild(gameFlowText);
   gameFlow.appendChild(playerNameBox);
-  gameFlow.appendChild(submitNameButton);
+  gameFlow.appendChild(submitButton);
       // game Area
   gameArea.appendChild(gameFlow);
   gameArea.appendChild(gameBoard);
 
-
+  // function addToDom(target, idName, className, content) {
+  function addToDom(testing){
+    return testing;
+  }
 
   // const [player1, player2] = players(); // GET "player1" and "player2"
   // const gameDisplay = document.getElementById('gameArea'); // need another div layer here.  The cells are interfering with the intro text.
@@ -168,6 +178,7 @@ function display(){ // display the current state of the game
   //   gameDisplay.appendChild(gameBoard);
   // }
   // console.log("display ran");
+  return addToDom;
 }
 
 //
@@ -251,11 +262,7 @@ function game() {
 display();
 // game();
 
-
-
-
-
-
+console.log(display.addToDom);
 
 
 
