@@ -1,6 +1,7 @@
 //
-// ** GAME BOARD **
+// ** GAME BOARD START **
 //
+
 const GameBoard = (function(){
   // Variables
   let board = [];
@@ -64,11 +65,12 @@ const GameBoard = (function(){
 })();
 
 //
-
+// ** GAME BOARD END **
 //
 
+
 //
-// ** PLAYERS ** 
+// ** PLAYERS START ** 
 //
 function players() { // collect player info and return array of players     **inputs need to be sanitised**
   // player one
@@ -91,13 +93,15 @@ function players() { // collect player info and return array of players     **in
 }
 
 //
-
+// ** PLAYERS END ** 
+//
 //
 
+
 //
-// ** DISPLAY ** 
+// ** DISPLAY START ** 
 //
-const display = function(){ // display the current state of the game
+const display = (function (){ // display the current state of the game
   // Getting game area
   const gameArea = document.querySelector('.gameArea'); // Framed area
   // Creating game elements
@@ -108,10 +112,7 @@ const display = function(){ // display the current state of the game
   const playerMarkDiv = document.createElement('div'); // Player mark button container
         // mark radio button components.
 
-
-
-
-
+  // new stuff start
 
   const submitButton = document.createElement('button');
       // board
@@ -134,12 +135,15 @@ const display = function(){ // display the current state of the game
   gameFlow.appendChild(submitButton);
       // game Area
   gameArea.appendChild(gameFlow);
-  gameArea.appendChild(gameBoard);
+  // gameArea.appendChild(gameBoard);
 
   // function addToDom(target, idName, className, content) {
-  function addToDom(testing){
-    return testing;
+  function addGameArea(){
+    gameArea.appendChild(gameFlow);
+    return "gameArea added";
   }
+  
+  // new stuff end
 
   // const [player1, player2] = players(); // GET "player1" and "player2"
   // const gameDisplay = document.getElementById('gameArea'); // need another div layer here.  The cells are interfering with the intro text.
@@ -177,16 +181,18 @@ const display = function(){ // display the current state of the game
   //   gameDisplay.appendChild(gameFlowText);
   //   gameDisplay.appendChild(gameBoard);
   // }
-  // console.log("display ran");
-  return addToDom;
-}
+  console.log("display ran");
+  return { addGameArea };
+})();
 
 //
-
+// ** DISPLAY END ** 
+//
 //
 
+
 //
-// ** GAME FLOW ** 
+// ** GAME FLOW START** 
 //
 function game() {
   console.log("starting game");
@@ -253,17 +259,17 @@ function game() {
   getFirstPlayer();
   playRound();
 }
+//
+// ** GAME FLOW END ** 
+//
 
 
 
 //
 // RUN GAME
 //
-display();
 // game();
-
-console.log(display.addToDom);
-
+display.addGameArea();
 
 
 
