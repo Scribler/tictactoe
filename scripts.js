@@ -133,14 +133,14 @@ const display = (function (){ // display the current state of the game
   gameFlow.appendChild(gameFlowText);
   gameFlow.appendChild(playerNameBox);
   gameFlow.appendChild(submitButton);
-      // game Area
-  gameArea.appendChild(gameFlow);
-  // gameArea.appendChild(gameBoard);
 
-  // function addToDom(target, idName, className, content) {
-  function addGameArea(){
+  function addTextArea(){ // add text area to DOM
     gameArea.appendChild(gameFlow);
-    return "gameArea added";
+    return "Text Area added";
+  }
+  function addGameBoard(){ // add game board to DOM
+    gameArea.appendChild(gameBoard);
+    return "Gameboard added";
   }
   
   // new stuff end
@@ -182,7 +182,7 @@ const display = (function (){ // display the current state of the game
   //   gameDisplay.appendChild(gameBoard);
   // }
   console.log("display ran");
-  return { addGameArea };
+  return { addTextArea, addGameBoard };
 })();
 
 //
@@ -269,7 +269,8 @@ function game() {
 // RUN GAME
 //
 // game();
-display.addGameArea();
+display.addTextArea();
+display.addGameBoard();
 
 
 
