@@ -102,32 +102,37 @@ function players() { // collect player info and return array of players     **in
 // ** DISPLAY START ** 
 //
 const display = (function (){ // display the current state of the game
+  
   // Getting game area
   const gameArea = document.querySelector('.gameArea'); // Framed area
-  // Creating game elements
-      // text area
+ 
+  // Creat text area
   const gameFlow = document.createElement('div'); // Instructions
   const gameFlowText = document.createElement('p'); // Instructions
   const playerNameBox = document.createElement('input'); // Name
-  const playerMarkDiv = document.createElement('div'); // Player mark button container
-        // mark radio button components.
-
-  // new stuff start
-
+ 
+  // Create 'Mark Choice" radio button components.
+  // ----------placeholder--------------
+  
+  // Create Submit button
   const submitButton = document.createElement('button');
-      // board
+  
+  // Create Game Board
   const gameBoard = document.createElement('div'); // Game Board
   const gameCell = document.createElement('div'); // GameBoardCell
   const mark = document.createElement('div'); // mark
+  
   // adding styles
   gameFlow.classList.add('gameFlow');
   gameFlowText.classList.add('gameFlowText');
   gameBoard.classList.add('gameBoard');
   submitButton.classList.add('submitButton');
+  
   // adding content
-  gameFlowText.innerHTML = "Player ##, enter your name."; // changeable
+  gameFlowText.textContent = "Player ##, enter your name.";
   submitButton.textContent = "Submit";
   gameBoard.textContent = "b";
+  
   // assembly
       // gameFlow
   gameFlow.appendChild(gameFlowText);
@@ -138,50 +143,48 @@ const display = (function (){ // display the current state of the game
     gameArea.appendChild(gameFlow);
     return "Text Area added";
   }
+
   function addGameBoard(){ // add game board to DOM
+    const [player1, player2] = players(); // GET "player1" and "player2"
+    const gameDisplay = document.getElementById('gameArea'); // need another div layer here.  The cells are interfering with the intro text.
+    gameDisplay.setAttribute('id', 'gameArea');
+
+    const gameBoard = document.createElement('div');
+    gameBoard.setAttribute('id', 'gameBoard');
+    gameBoard.classList.add("gameBoard");
+    gameBoard.innerHTML = "";
+    
+    // Building The Game Board Start
+    for (let i = 0; i < 9; i++) {
+      // making the physical elements
+      const gameCell= document.createElement('div');
+      const mark = document.createElement('div');
+      gameCell.classList.add('gameCell');
+      mark.classList.add('mark')
+      mark.setAttribute('id', `mark${i}`);
+
+      // setting the inner value for each block
+      let blockText = "";
+      if (player1.playedCells.includes(i.toString())) {
+        blockText = player1.mark;
+      } else if (player2.playedCells.includes(i.toString())) {
+        blockText = player2.mark;
+      } else {
+        blockText = "";
+      }
+      mark.innerText = blockText;
+
+      // putting the pieces together
+      gameCell.appendChild(mark);
+      gameBoard.appendChild(gameCell);
+      // gameDisplay.appendChild(gameBoard);
+    }
+    // Building The Game Board End
+
     gameArea.appendChild(gameBoard);
+    console.log("gameboard added");
     return "Gameboard added";
   }
-  
-  // new stuff end
-
-  // const [player1, player2] = players(); // GET "player1" and "player2"
-  // const gameDisplay = document.getElementById('gameArea'); // need another div layer here.  The cells are interfering with the intro text.
-  // gameDisplay.setAttribute('id', 'gameArea');
-  //
-  // const gameBoard = document.createElement('div');
-  // gameBoard.setAttribute('id', 'gameBoard');
-  // gameBoard.innerHTML = "";
-  // const gameFlowText = document.createElement("h3");
-  // gameFlowText.classList.add('gameFlowText');
-  // // gameFlowText.innerText = flowText; // production
-  // gameFlowText.innerText = "PlaceHolderText"; // testing only
-  // for (let i = 0; i < 9; i++) {
-  //   // making the physical elements
-  //   const gameCell= document.createElement('div');
-  //   const mark = document.createElement('div');
-  //   gameCell.classList.add('gameCell');
-  //   mark.classList.add('mark')
-  //   mark.setAttribute('id', `mark${i}`);
-  //
-  //   // setting the inner value for each block
-  //   let blockText = "";
-  //   if (player1.playedCells.includes(i.toString())) {
-  //     blockText = player1.mark;
-  //   } else if (player2.playedCells.includes(i.toString())) {
-  //     blockText = player2.mark;
-  //   } else {
-  //     blockText = "";
-  //   }
-  //   mark.innerText = blockText;
-  //
-  //   // putting the pieces together
-  //   gameCell.appendChild(mark);
-  //   gameBoard.appendChild(gameCell);
-  //   gameDisplay.appendChild(gameFlowText);
-  //   gameDisplay.appendChild(gameBoard);
-  // }
-  console.log("display ran");
   return { addTextArea, addGameBoard };
 })();
 
