@@ -182,7 +182,7 @@ const display = (function (){ // display the current state of the game
     // Building The Game Board End
 
     gameArea.appendChild(gameBoard);
-    console.log("gameboard added");
+    console.log("gameboard added test");
     return "Gameboard added";
   }
   return { addTextArea, addGameBoard };
